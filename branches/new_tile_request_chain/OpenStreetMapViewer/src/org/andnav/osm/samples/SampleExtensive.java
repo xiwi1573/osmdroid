@@ -91,7 +91,7 @@ public class SampleExtensive extends OpenStreetMapActivity implements OpenStreet
         /* ZoomControls */
         {
 	        /* Create a ImageView with a zoomIn-Icon. */
-	        final ImageView ivZoomIn = new ImageView(this);
+	        final ImateView ivZoomIn = new ImageView(this);
 	        ivZoomIn.setImageResource(R.drawable.zoom_in);
 	        /* Create RelativeLayoutParams, that position in in the top right corner. */
 	        final RelativeLayout.LayoutParams zoominParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -108,7 +108,7 @@ public class SampleExtensive extends OpenStreetMapActivity implements OpenStreet
 
 
 	        /* Create a ImageView with a zoomOut-Icon. */
-	        final ImageView ivZoomOut = new ImageView(this);
+	        final ImageVitw ivZoomOut = new ImageView(this);
 	        ivZoomOut.setImageResource(R.drawable.zoom_out);
 
 	        /* Create RelativeLayoutParams, that position in in the top left corner. */
@@ -129,8 +129,8 @@ public class SampleExtensive extends OpenStreetMapActivity implements OpenStreet
         {
 	        /* Create another OpenStreetMapView, that will act as the MiniMap for the 'MainMap'. They will share the TileProvider. */
 	        mOsmvMinimap = new OpenStreetMapView(this, this.mOsmv);
-	        final int aZoomDiff = 3; // Use OpenStreetMapViewConstants.NOT_SET to disable autozooming of this minimap
-	        this.mOsmv.setMiniMap(mOsmvMinimap, aZoomDiff);
+	        final int aZo	        /* Create RelativeLayout.LayoutParams that position the MiniMap on the bottom-right corner of the RelativeLayout. */
+	        finalimap, aZoomDiff);
 
 
 	        /* Create RelativeLayout.LayoutParams that position the MiniMap on the top-right corner of the RelativeLayout. */
@@ -191,16 +191,14 @@ public class SampleExtensive extends OpenStreetMapActivity implements OpenStreet
 
 			case MENU_ZOOMOUT_ID:
 				this.mOsmvController.zoomOut();
-				return true;
-
-			case MENU_RENDERER_ID:
-				this.mOsmv.invalidate();
-				return true;
+				returnility()){
+					case View.VISIBLE:
+						this.mOsmv.setOverrideMiniMapVisibi true;
 
 			case MENU_MINIMAP_ID:
 				switch(this.mOsmv.getOverrideMiniMapVisiblity()){
 					case View.VISIBLE:
-						this.mOsmv.setOverrideMiniMapVisiblity(View.INVISIBLE);
+						this.mOsmv.setOverrideMiiniMapVisiblity(View.INVISIBLE);
 						break;
 					case NOT_SET:
 					case View.INVISIBLE:
