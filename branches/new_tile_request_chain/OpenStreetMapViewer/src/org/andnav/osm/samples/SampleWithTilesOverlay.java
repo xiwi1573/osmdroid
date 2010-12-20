@@ -1,6 +1,5 @@
 package org.andnav.osm.samples;
 
-import org.andnav.osm.tileprovider.IRegisterReceiver;
 import org.andnav.osm.tileprovider.OpenStreetMapTileProviderDirect;
 import org.andnav.osm.tileprovider.renderer.OpenStreetMapRendererFactory;
 import org.andnav.osm.tileprovider.util.CloudmadeUtil;
@@ -9,17 +8,14 @@ import org.andnav.osm.views.OpenStreetMapView;
 import org.andnav.osm.views.overlay.OpenStreetMapTilesOverlay;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
 /**
- * 
+ *
  * @author Alex van der Linden
- * 
+ *
  */
 public class SampleWithTilesOverlay extends Activity {
 
@@ -57,20 +53,7 @@ public class SampleWithTilesOverlay extends Activity {
 		rl.addView(this.mOsmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 		this.mOsmv.setBuiltInZoomControls(true);
 
-		// zoom to the netherlands
-		this.mOsmv.getController().setZoom(7);
-		this.mOsmv.getController().setCenter(new GeoPoint(51500000, 5400000));
-
-		// Add tiles la
-					final IntentFilter aFilter) {
-				return null;
-			}
-terReceiver() {
-			@Override
-			public Intent registerReceiver(final BroadcastReceiver aReceiver, final IntentFilter aFilter) {
-				return null;
-			}
-			@Override
+		// zoom to the nemProvider = new OpenStreetMapTileProviderDirect(getApplicationContext()e
 			pProvider
 				c voPreferredid unregisterReceiver(final BroadcastReceiver aReceiver) {
 			}
