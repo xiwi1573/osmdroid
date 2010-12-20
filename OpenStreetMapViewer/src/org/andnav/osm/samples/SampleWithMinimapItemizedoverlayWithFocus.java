@@ -5,11 +5,8 @@ import java.util.ArrayList;
 
 import org.andnav.osm.ResourceProxy;
 import org.andnav.osm.ResourceProxyImpl;
-import org.andnav.osm.tileprovider.OpenStreetMapTileProviderDirect;
 import org.andnav.osm.tileprovider.renderer.OpenStreetMapRendererFactory;
 import org.andnav.osm.tileprovider.util.CloudmadeUtil;
-import org.andnav.osm.tileprovider.util.SimpleInvalidationHandler;
-import org.andnav.osm.tileprovider.util.SimpleRegisterReceiver;
 import org.andnav.osm.util.GeoPoint;
 import org.andnav.osm.views.OpenStreetMapView;
 import org.andnav.osm.views.overlay.OpenStreetMapViewItemizedOverlay;
@@ -158,7 +155,4 @@ public class SampleWithMinimapItemizedoverlayWithFocus extends Activity {
 	// Methods
 	// ===========================================================
 
-	// ===========================================================
-	// Inner and Anonymous Classes
-	// ===========================================================
-}
+	// =========
