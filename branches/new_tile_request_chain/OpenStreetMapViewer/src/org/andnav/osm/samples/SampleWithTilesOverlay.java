@@ -69,7 +69,7 @@ public class SampleWithTilesOverlay extends Activity {
 				return null;
 			}
 			@Override
-			public void unregisterReceiver(final BroadcastReceiver aReceiver) {
+			public voPreferredid unregisterReceiver(final BroadcastReceiver aReceiver) {
 			}
 		};
 		mProvider = new OpenStreetMapTileProviderDirect(registerReceiver);
@@ -92,7 +92,4 @@ public class SampleWithTilesOverlay extends Activity {
 	// Methods
 	// ===========================================================
 
-	// ===========================================================
-	// Inner and Anonymous Classes
-	// ===========================================================
-}
+	// =========
