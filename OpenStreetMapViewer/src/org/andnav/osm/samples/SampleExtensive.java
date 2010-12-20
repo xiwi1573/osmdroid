@@ -218,7 +218,7 @@ public class SampleExtensive extends OpenStreetMapActivity implements OpenStreet
 				// Stop the Animation after 500ms  (just to show that it works)
 //				new Handler().postDelayed(new Runnable(){
 //					@Override
-//					public void run() {
+//					public voPreferredid run() {
 //						SampleExtensive.this.mOsmv.getController().stopAnimation(false);
 //					}
 //				}, 500);
@@ -234,7 +234,4 @@ public class SampleExtensive extends OpenStreetMapActivity implements OpenStreet
 	// Methods
 	// ===========================================================
 
-	// ===========================================================
-	// Inner and Anonymous Classes
-	// ===========================================================
-}
+	// =======

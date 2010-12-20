@@ -3,7 +3,6 @@ package org.andnav.osm;
 
 import org.andnav.osm.constants.OpenStreetMapConstants;
 import org.andnav.osm.samples.SampleLoader;
-import org.andnav.osm.tileprovider.OpenStreetMapTileProviderDirect;
 import org.andnav.osm.tileprovider.renderer.IOpenStreetMapRendererInfo;
 import org.andnav.osm.tileprovider.renderer.OpenStreetMapRendererFactory;
 import org.andnav.osm.tileprovider.util.CloudmadeUtil;
@@ -54,10 +53,13 @@ public class OpenStreetMap extends Activity implements OpenStreetMapConstants {
 	private OpenStreetMapView mOsmv;
 	private MyLocationOverlay mLocationOverlay;
 	private ResourceProxy mResourceProxy;
-	private OpenStreetMapTileProviderDirect mTileProvider;
+e();
 
-	// ===========================================================
-	// Constructors
+		default:
+			dialog = null;
+			break;
+		}
+		return dialog;Constructors
 	// ===========================================================
 	/** Called when the activity is first created. */
 	@Override
@@ -94,7 +96,8 @@ public class OpenStreetMap extends Activity implements OpenStreetMapConstants {
 
 	@Override
 	protected void onPause() {
-		SharedPreferences.Editor edit = mPrefs.edit();
+		ShareOsmv.getTileProvider()
+				.getPreferredtor edit = mPrefs.edit();
 		edit.putString(PREFS_RENDERER, mTileProvider.getRenderer().name());
 		edit.putInt(PREFS_SCROLL_X, mOsmv.getScrollX());
 		edit.putInt(PREFS_SCROLL_Y, mOsmv.getScrollY());
@@ -116,7 +119,7 @@ public class OpenStreetMap extends Activity implements OpenStreetMapConstants {
 		final String rendererName = mPrefs.getString(PREFS_RENDERER,
 				OpenStreetMapRendererFactory.DEFAULT_RENDERER.name());
 		try {
-			final IOpenStreetMapRendererInfo renderer = OpenStreetMapRendererFactory
+			final IOpenStreetMapRendererInfo renderer =Preferred OpenStreetMapRendererFactory
 					.getRenderer(rendererName);
 			mOsmv.setRenderer(renderer);
 		} catch (IllegalArgumentException ignore) {
@@ -157,8 +160,7 @@ public class OpenStreetMap extends Activity implements OpenStreetMapConstants {
 		return true;
 	}
 
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
+	@OOsmv.getTileProvider().getPreferred boolean onPrepareOptionsMenu(Menu menu) {
 		int ordinal = mTileProvider.getRenderer().ordinal();
 		menu.findItem(1000 + ordinal).setChecked(true);
 		return true;
@@ -202,10 +204,8 @@ public class OpenStreetMap extends Activity implements OpenStreetMapConstants {
 			return true;
 
 		case MENU_ABOUT:
-			showDialog(DIALOG_ABOUT_ID);
-			return true;
-
-		default: // Map mode submenu items
+			showDialog(DIALOG_ABOUPreferredRenderer(OpenStreetMapRendererFactory
+					.getRenderer(itemms
 			mOsmv.setRenderer(OpenStreetMapRendererFactory.getRenderer(item
 					.getItemId() - 1000));
 		}
@@ -263,6 +263,4 @@ public class OpenStreetMap extends Activity implements OpenStreetMapConstants {
 	// ===========================================================
 
 	// ===========================================================
-	// Inner and Anonymous Classes
-	// ===========================================================
-}
+	// Inner and Anonymous 
