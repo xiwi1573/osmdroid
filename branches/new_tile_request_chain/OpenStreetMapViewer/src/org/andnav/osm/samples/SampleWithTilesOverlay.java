@@ -13,9 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
 /**
- *
+ * 
  * @author Alex van der Linden
- *
+ * 
  */
 public class SampleWithTilesOverlay extends Activity {
 
@@ -50,8 +50,7 @@ public class SampleWithTilesOverlay extends Activity {
 		this.mOsmv.setBuiltInZoomControls(true);
 
 		// zoom to the nemProvider = new OpenStreetMapTileProviderDirect(getApplicationContext()e
-			pProvider
-				c voPreferredid unregisterReceiver(final BroadcastReceiver aReceiver) {
+			pProvider.setid unregisterReceiver(final BroadcastReceiver aReceiver) {
 			}
 		};
 		mProvider = new OpenStreetMapTilePro(this.mOsmv,
