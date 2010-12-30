@@ -28,9 +28,9 @@ import android.widget.Toast;
 
 /**
  * Default map view activity.
- *
+ * 
  * @author Manuel Stahl
- *
+ * 
  */
 public class OpenStreetMap extends Activity implements OpenStreetMapConstants {
 	// ===========================================================
@@ -94,8 +94,8 @@ e();
 
 	@Override
 	protected void onPause() {
-		ShareOsmv.getTileProvider()
-				.getPreferredtor edit = mPrefs.edit();
+		ShareOsmv.getTileProvider().getRenderer()
+				 mPrefs.edit();
 		edit.putString(PREFS_RENDERER, mTileProvider.getRenderer().name());
 		edit.putInt(PREFS_SCROLL_X, mOsmv.getScrollX());
 		edit.putInt(PREFS_SCROLL_Y, mOsmv.getScrollY());
@@ -112,8 +112,8 @@ e();
 	}
 
 	@Override
-	pro
-			mPrefs.getString(PREFS_RENDERER, sume();
+	promPrefs.getString(PREFS_RENDERER,
+				sume();
 		final String rendererName = mPrefs.getString(PREFS_RENDERER,
 				OpenStreetMapRendererFactory.DEFAULT_RENDERER.name());
 		try {
@@ -158,7 +158,7 @@ e();
 		return true;
 	}
 
-	@OOsmv.getTileProvider().getPreferred boolean onPrepareOptionsMenu(Menu menu) {
+	@OOsmv.getTileProvider().get boolean onPrepareOptionsMenu(Menu menu) {
 		int ordinal = mTileProvider.getRenderer().ordinal();
 		menu.findItem(1000 + ordinal).setChecked(true);
 		return true;
