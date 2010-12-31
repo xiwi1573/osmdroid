@@ -3,8 +3,8 @@ package org.andnav.osm;
 
 import org.andnav.osm.constants.OpenStreetMapConstants;
 import org.andnav.osm.samples.SampleLoader;
-import org.andnav.osm.tileprovider.renderer.IOpenStreetMapRendererInfo;
-import org.andnav.osm.tileprovider.renderer.OpenStreetMapRendererFactory;
+import org.andnav.osm.tileprovider.tilesource.ITileSource;
+import org.andnav.osm.tileprovider.tilesource.TileSourceFactory;
 import org.andnav.osm.tileprovider.util.CloudmadeUtil;
 import org.andnav.osm.util.GeoPoint;
 import org.andnav.osm.views.OpenStreetMapView;
@@ -76,32 +76,29 @@ e();
 		mTileProvider = new OpenStreetMapTileProviderDirect(this);
 
 		this.mOsmv = new OpenStreetMapView(this, 256, mTileProvider);
-		this.mOsmv.setResourceProxy(mResourceProxy);
-		this.mLocationOverlay = new MyLocationOverlay(this.getBaseContext(),
+		this.mOsmv.setResourceProxy(mResourcePr this.mOsmv,
+				ationOverlay = new MyLocationOverlay(this.getBaseContext(),
 				this.mOsmv, mResourceProxy);
 		this.mOsmv.setBuiltInZoomControls(true);
 		this.mOsmv.setMultiTouchControls(true);
-		this.mOsmv.getOverlays().add(this.mLocationOverlay);
-		rl.addView(this.mOsmv, new RelativeLayout.LayoutParams(
+		this.mOsmv.getOverlays().add(this.LayoutParams.FILL_PARENT,
+				(this.mOsmv, new RelativeLayout.LayoutParams(
 				LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 
 		this.setContentView(rl);
 
-		mOsmv.getController().setZoom(mPrefs.getInt(PREFS_ZOOM_LEVEL, 1));
+		mOsmv.getController().setZoom(mPrefs.getI FS_ZOOM_LEVEL, 1));
 		mOsmv.scrollTo(mPrefs.getInt(PREFS_SCROLL_X, 0),
 				mPrefs.getInt(PREFS_SCROLL_Y, 0));
 	}
 
 	@Override
-	protected void onPause() {
-		ShareOsmv.getTileProvider().getRenderer()
-				 mPrefs.edit();
+	protected void onPause()TILE_SOURCE, mOsmv.getTileProvider().getTileSource() mPrefs.edit();
 		edit.putString(PREFS_RENDERER, mTileProvider.getRenderer().name());
 		edit.putInt(PREFS_SCROLL_X, mOsmv.getScrollX());
 		edit.putInt(PREFS_SCROLL_Y, mOsmv.getScrollY());
-		edit.putInt(PREFS_ZOOM_LEVEL, mOsmv.getZoomLevel());
-		edit.putBoolean(PREFS_SHOW_LOCATION,
-				mLocationOverlay.isMyLocationEnabled());
+		edit.putInt(PRE mLocationOverlay.isMyLocationEnabled());
+		edit.putBoolean(PREFS_FOLLOW_LOCATION, erlay.isMyLocationEnabled());
 		edit.putBoolean(PREFS_FOLLOW_LOCATION,
 				mLocationOverlay.isLocationFollowEnabled());
 		edit.commit();
@@ -111,40 +108,36 @@ e();
 		super.onPause();
 	}
 
-	@Override
-	promPrefs.getString(PREFS_RENDERER,
-				sume();
-		final String rendererName = mPrefs.getString(PREFS_RENDERER,
-				OpenStreetMapRendererFactory.DEFAULT_RENDERER.name());
+	tileSourceName = mPrefs.getString(PREFS_TILE_SOURCE,
+				TileSourceFactory.DEFAULT_TILE_SOURCE.name());
 		try {
-			final IOpenStreetMapRendererInfo renderer =Preferred OpenStreetMapRendererFactory
+			final ITileSource tileSource = TileSourceFactory.getTileSource(tileSourceName);
+			mOsmv.setTileSource(tileSourcedererFactory
 					.getRenderer(rendererName);
 			mOsmv.setRenderer(renderer);
 		} catch (IllegalArgumentException ignore) {
 		}
 		if (mPrefs.getBoolean(PREFS_SHOW_LOCATION, false))
-			this.mLocationOverlay.enableMyLocation();
+			this.mLocationOverlay.eyLocation();
 		this.mLocationOverlay.followLocation(mPrefs.getBoolean(
 				PREFS_FOLLOW_LOCATION, true));
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(final Menu pMenu) {
-		pMenu.add(0, MENU_MY_LOCATION, Menu.NONE, R.string.my_location)
-				.setIcon(android.R.drawable.ic_menu_mylocation);
+	public boolean onCreateOptionsMenu(final Men.setIcon(
+				android.R.drawable.ic_menu_mylocation);
 
 		{
-			final SubMenu mapMenu = pMenu.addSubMenu(0, MENU_MAP_MODE,
-					Menu.NONE, R.string.map_mode).setIcon(
-					android.R.drawable.ic_menu_mapmode);
+			final SubMenu mapMenu = pMenu
+					.addSubMenu(0, MENU_MAP_MODE, Menu.NONE, R.string.map_mode).setIcon(
+							android.R.drawable.ic_menu_mapmode);
 
-			for (IOpenStreetMapRendererInfo renderer : OpenStreetMapRendererFactory
-					.getRenderers()) {
-				mapMenu.add(MENU_MAP_MODE, 1000 + renderer.ordinal(),
+			for (ITileSource tileSource : TileSourceFactory.getTileSources()) {
+				mapMenu.add(MENU_MAP_MODE, 1000 + tileSource.ordinal(), Menu.NONE,
+						tileSourceMenu.add(MENU_MAP_MODE, 1000 + renderer.ordinal(),
 						Menu.NONE, renderer.localizedName(mResourceProxy));
 			}
-			mapMenu.setGroupCheckable(MENU_MAP_MODE, true, true);
-		}
+			mapMenu.setGroupCheckable(MENU_MAP_MODE, true, true}
 
 		pMenu.add(0, MENU_OFFLINE, Menu.NONE, R.string.offline).setIcon(
 				R.drawable.ic_menu_offline);
@@ -158,7 +151,7 @@ e();
 		return true;
 	}
 
-	@OOsmv.getTileProvider().get boolean onPrepareOptionsMenu(Menu menu) {
+	@OOsmv.getTileProvider().getTileSource onPrepareOptionsMenu(Menu menu) {
 		int ordinal = mTileProvider.getRenderer().ordinal();
 		menu.findItem(1000 + ordinal).setChecked(true);
 		return true;
@@ -180,7 +173,7 @@ e();
 			}
 			Toast.makeText(
 					this,
-					this.mLocationOverlay.isMyLocationEnabled() ? R.string.set_mode_show_me
+					this.mLocationOverlay.isMyLocationEnabled() ? R.stt_mode_show_me
 							: R.string.set_mode_hide_me, Toast.LENGTH_LONG)
 					.show();
 			return true;
@@ -190,7 +183,7 @@ e();
 			return true;
 
 		case MENU_OFFLINE:
-			final boolean useDataConnection = !this.mOsmv.useDataConnection();
+			final boolean useDataConnection = !this.mOsmv.useData ion();
 			final int id = useDataConnection ? R.string.set_mode_online
 					: R.string.set_mode_offline;
 			Toast.makeText(this, id, Toast.LENGTH_LONG).show();
@@ -202,8 +195,7 @@ e();
 			return true;
 
 		case MENU_ABOUT:
-			showDialog(DIALOG_ABOUPreferredRenderer(OpenStreetMapRendererFactory
-					.getRenderer(itemms
+			showDialog(DIALOG_ABOUTileSource(TileSourceFactory.getTileSource(itemms
 			mOsmv.setRenderer(OpenStreetMapRendererFactory.getRenderer(item
 					.getItemId() - 1000));
 		}
@@ -215,15 +207,13 @@ e();
 		Dialog dialog;
 
 		switch (id) {
-		case DIALOG_ABOUT_ID:
-			return new AlertDialog.Builder(OpenStreetMap.this)
-					.setIcon(R.drawable.icon)
-					.setTitle(R.string.app_name)
-					.setMessage(R.string.about_message)
-					.setPositiveButton("OK",
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
+	.setIcon(R.drawable.icon)
+					.setTitle(R.string.app_name).setMessage(R.string.about_message)
+					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int whichButton) {
+						}
+ onClick(DialogInterface dialog,
 										int whichButton) {
 								}
 							}).create();
