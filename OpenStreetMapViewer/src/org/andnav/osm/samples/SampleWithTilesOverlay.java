@@ -1,7 +1,7 @@
 package org.andnav.osm.samples;
 
 import org.andnav.osm.tileprovider.OpenStreetMapTileProviderDirect;
-import org.andnav.osm.tileprovider.renderer.OpenStreetMapRendererFactory;
+import org.andnav.osm.tileprovider.tilesource.TileSourceFactory;
 import org.andnav.osm.tileprovider.util.CloudmadeUtil;
 import org.andnav.osm.util.GeoPoint;
 import org.andnav.osm.views.OpenStreetMapView;
@@ -42,19 +42,19 @@ public class SampleWithTilesOverlay extends Activity {
 
 		// Setup base map
 		CloudmadeUtil.retrieveCloudmadeKey(getApplicationContext()OpenStreetMapRendererFactory.setCloudmadeKey(cloudmadeKey);
-		mTileProvider = new OpenStreetMapTileProviderDirec
-				t(getApplicationContext());
+		mTileProvider = new OpenStreetMapTileProviderDirecLayoutParams.FILL_PARENT,
+				;
 
 		this.mOsmv = new OpenStreetMapView(this, 256, mTileProvider);
 		rl.addView(this.mOsmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 		this.mOsmv.setBuiltInZoomControls(true);
 
 		// zoom to the nemProvider = new OpenStreetMapTileProviderDirect(getApplicationContext()e
-			pProvider.setid unregisterReceiver(final BroadcastReceiver aReceiver) {
+			pProvider.setTileSource(TileSourceoadcastReceiver aReceiver) {
 			}
 		};
-		mProvider = new OpenStreetMapTilePro(this.mOsmv,
-				gisterReceiver);
+		mProvider = new OpenStreetMapTilePro(this.mOsmv, mProvider,
+				ver);
 		mOsmv.setRenderer(OpenStreetMapRendererFactory.FIETS_OVERLAY_NL);
 		this.mTilesOverlay = new OpenStreetMapTilesOverlay (this.mOsmv, mProvider, this.getBaseContext());
 		this.mOsmv.getOverlays().add(this.mTilesOverlay);
